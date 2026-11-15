@@ -52,9 +52,39 @@ Type: Libre Caslon Display 400 (display), Instrument Sans 400 to 600 (body). Sca
 - [x] Phase 5: the Hold Request with every pre-fill wired, the honest last step, the mobile sticky bar.
 - [x] Phase 6: `/new` with filters and lightbox, `/meet-dawn`, `/visit` with the tap-to-load map, the `/contact` redirect, the 404 page.
 - [x] Phase 7: launch switch and header, titles, descriptions, h1s, canonicals, JSON-LD (validated), robots, sitemap, `llms.txt`, OG image, favicon, live-mode build guard, `SEO-LAUNCH.md`. Delete `/palette-board`.
-- [ ] Phase 8: Lighthouse 13 on a production build, live mode then demo mode, mobile and desktop. Header proof.
+- [x] Phase 8: Lighthouse 13 on a production build, live mode then demo mode, mobile and desktop. Header proof.
 - [ ] Phase 9: independent review 2 with fact audit, one round of fixes, keyboard-only and 200% zoom passes, final commit.
 
 ## Phase log
 - Phase 2, independent review 1 (fresh subagent, hero screenshots only): 68/100 (design 28/40, usability 20/30, creativity 13/20, content 7/10). Fixed: (1) the rail now shows hooks and about half the first card above the mobile bar (tighter hero spacing, smaller mobile hangers); (2) rail reads as a rod, not a slider (stroke-only hangers, no panel border, bleeds off the right edge on desktop, uniform 9:10 frames with per-photo crop focus that keeps every watermark whole, aligned tags, less dead space); (3) the weekly line's dot became a short mint rule, the nav plate is larger with a lighter frame. Not applied, because the spec fixes them: renaming "Hold it for me", rewriting Dawn's sub line, and photo-first proof order on phones (it would push the 2016 line and the review out of the first two screens).
 - Phase 3: styler deck ships as a real stacked deck (fallback not needed). Weekend easy holds 4 looks (05, 06, 11, 14) and A day in town adds 07 so every rail card opens a matching look; the spec says 1 to 3, noted here as a deliberate deviation.
+
+- Phase 8: Lighthouse 13.6.0 against production builds (next build, next start), mobile and desktop, home plus one page of each type. Live mode ran locally with NEXT_PUBLIC_SITE_MODE=live NEXT_PUBLIC_SITE_URL=http://localhost:3000 and ALLOW_DRAFT_IN_LIVE=1 (DRAFTs allowed for this local run only). First pass had home mobile at Performance 86 (LCP 3.5 s) and /meet-dawn, /visit at 93 and 94 (LCP 3.0 to 3.2 s). Fixes: dropped the unused wdth axis from Instrument Sans (56 KB to 29 KB), exact sizes so phones fetch 640w, and on phones the /visit address and hours card comes before the photo and the /meet-dawn header photo became a 58% inset, so the LCP is text that paints before the framework scripts.
+
+Live mode:
+
+| Page | Form | Perf | A11y | Best Pr. | SEO | LCP | CLS | TBT | Failing (a11y/BP/SEO) |
+|---|---|---|---|---|---|---|---|---|---|
+| / | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 60 ms | none |
+| /new | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 90 ms | none |
+| /meet-dawn | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 70 ms | none |
+| /visit | mobile | 99 | 100 | 100 | 100 | 0.9 s | 0 | 120 ms | none |
+| / | desktop | 100 | 100 | 100 | 100 | 0.3 s | 0 | 0 ms | none |
+| /new | desktop | 100 | 100 | 100 | 100 | 0.3 s | 0 | 0 ms | none |
+| /meet-dawn | desktop | 100 | 100 | 100 | 100 | 0.6 s | 0 | 0 ms | none |
+| /visit | desktop | 100 | 100 | 100 | 100 | 0.6 s | 0 | 0 ms | none |
+
+Agentic Browsing (information only, home mobile, live): 100
+
+Demo mode (SEO 69 expected, only is-crawlable fails):
+
+| Page | Form | Perf | A11y | Best Pr. | SEO | LCP | CLS | TBT | Failing (a11y/BP/SEO) |
+|---|---|---|---|---|---|---|---|---|---|
+| / | mobile | 99 | 100 | 100 | 69 | 0.9 s | 0 | 90 ms | is-crawlable |
+| /new | mobile | 100 | 100 | 100 | 69 | 0.9 s | 0 | 60 ms | is-crawlable |
+| /meet-dawn | mobile | 100 | 100 | 100 | 69 | 0.9 s | 0 | 70 ms | is-crawlable |
+| /visit | mobile | 100 | 100 | 100 | 69 | 0.9 s | 0 | 80 ms | is-crawlable |
+| / | desktop | 100 | 100 | 100 | 69 | 0.3 s | 0 | 0 ms | is-crawlable |
+| /new | desktop | 100 | 100 | 100 | 69 | 0.3 s | 0 | 0 ms | is-crawlable |
+| /meet-dawn | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |
+| /visit | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |

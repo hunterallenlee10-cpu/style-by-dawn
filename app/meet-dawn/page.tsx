@@ -34,10 +34,13 @@ export default function MeetDawnPage() {
             Dawn runs {business.name}, a women&apos;s boutique inside {business.market} on Duke Street in Leonardtown, Maryland.
           </p>
         </div>
-        <figure className="lg:col-span-6">
-          <div className="rounded-[5px] border border-seam bg-petal p-2.5">
-            <Image src={door.src} width={door.width} height={door.height} alt={door.alt} preload sizes="(min-width: 1344px) 620px, (min-width: 1024px) 46vw, 100vw" className="h-auto w-full rounded-[3px]" />
+        <figure className="relative ml-auto w-[58%] rotate-[1.5deg] sm:w-full sm:rotate-0 lg:col-span-6">
+          <div className="rounded-[5px] border border-seam bg-petal p-1.5 sm:p-2.5">
+            <Image src={door.src} width={door.width} height={door.height} alt={door.alt} preload sizes="(min-width: 1344px) 620px, (min-width: 1024px) 46vw, (min-width: 640px) calc(100vw - 100px), 58vw" className="h-auto w-full rounded-[3px]" />
           </div>
+          <figcaption className="absolute right-[112%] bottom-3 w-32 -rotate-[1.5deg] text-right font-display text-lead leading-snug text-barnwood sm:static sm:mt-3 sm:w-auto sm:rotate-0 sm:text-center sm:text-small sm:font-sans">
+            {door.caption}.
+          </figcaption>
         </figure>
       </section>
 

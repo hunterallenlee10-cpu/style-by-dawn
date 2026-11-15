@@ -21,7 +21,6 @@ const instrument = Instrument_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-instrument',
-  axes: ['wdth'],
 });
 
 export const metadata: Metadata = {

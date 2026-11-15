@@ -35,16 +35,16 @@ export default function VisitPage() {
         </p>
 
         <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-12 lg:gap-12">
-          <figure className="lg:col-span-7">
+          <figure className="order-2 lg:order-none lg:col-span-7">
             <div className="rounded-[5px] border border-seam bg-petal p-2.5">
-              <Image src={shop.src} width={shop.width} height={shop.height} alt={shop.alt} preload sizes="(min-width: 1344px) 740px, (min-width: 1024px) 56vw, 100vw" className="h-auto w-full rounded-[3px]" />
+              <Image src={shop.src} width={shop.width} height={shop.height} alt={shop.alt} preload sizes="(min-width: 1344px) 740px, (min-width: 1024px) 56vw, calc(100vw - 60px)" className="h-auto w-full rounded-[3px]" />
             </div>
             <figcaption className="mt-3 text-center">
               <span className="tag-label">{shop.caption}</span>
             </figcaption>
           </figure>
 
-          <div className="hangtag self-start p-6 pt-10 lg:col-span-5 lg:p-8 lg:pt-12">
+          <div className="hangtag order-1 self-start p-6 pt-10 lg:order-none lg:col-span-5 lg:p-8 lg:pt-12">
             <h2 className="font-display text-h3">Find us</h2>
             <address className="mt-4 not-italic">
               <strong className="font-semibold">{business.name}</strong>
