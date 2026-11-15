@@ -48,7 +48,7 @@ Type: Libre Caslon Display 400 (display), Instrument Sans 400 to 600 (body). Sca
 - [x] Phase 1: scaffold, print installed versions, tokens in `@theme`, fonts, wordmark SVG script, the `/palette-board` board (screenshot and fix), nav, footer, `npm run check`.
 - [x] Phase 2: the hero with The Rail (375 first, then desktop), the proof strip, independent review 1 and one round of fixes.
 - [x] Phase 3: Where are you headed? styler, Stiffany band.
-- [ ] Phase 4: New this week bento, holiday band, reviews, FAQ, final band. Home page finished.
+- [x] Phase 4: New this week bento, holiday band, reviews, FAQ, final band. Home page finished.
 - [ ] Phase 5: the Hold Request with every pre-fill wired, the honest last step, the mobile sticky bar.
 - [ ] Phase 6: `/new` with filters and lightbox, `/meet-dawn`, `/visit` with the tap-to-load map, the `/contact` redirect, the 404 page.
 - [ ] Phase 7: launch switch and header, titles, descriptions, h1s, canonicals, JSON-LD (validated), robots, sitemap, `llms.txt`, OG image, favicon, live-mode build guard, `SEO-LAUNCH.md`. Delete `/palette-board`.

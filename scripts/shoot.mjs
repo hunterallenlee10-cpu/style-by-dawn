@@ -38,7 +38,14 @@ for (const w of widths) {
       await page.waitForTimeout(500);
     }
     const file = `${out}/${name}-${w}.png`;
-    await page.screenshot({ path: file, fullPage: full });
+    if (full) {
+      // Chromium's fullPage capture drops tiles on long pages; grow the viewport instead
+      const h = await page.evaluate(() => document.documentElement.scrollHeight);
+      await page.setViewportSize({ width: w, height: h });
+      await page.waitForTimeout(700);
+      await page.screenshot({ path: file });
+      await page.setViewportSize({ width: w, height: height ?? (w < 500 ? 812 : 900) });
+    } else await page.screenshot({ path: file });
     const overflow = await page.evaluate((vw) => Math.max(document.documentElement.scrollWidth, window.innerWidth) - vw, w);
     console.log(file, overflow > 0 ? `HORIZONTAL OVERFLOW ${overflow}px` : 'no overflow');
   }
