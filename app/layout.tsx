@@ -8,6 +8,7 @@ import { HoldProvider } from '@/components/HoldRequest/HoldProvider';
 import { MobileBar } from '@/components/MobileBar';
 import { Nav } from '@/components/Nav';
 import { business } from '@/lib/business';
+import { ogImage } from '@/lib/seo';
 import { IS_LIVE, SITE_URL } from '@/lib/site';
 import './globals.css';
 
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: business.name,
     locale: 'en_US',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: "Style by Dawn, Be your best you. The shopfront inside Shepherd's Old Field Market" }],
+    images: [ogImage],
   },
   twitter: { card: 'summary_large_image', images: ['/og-image.png'] },
   formatDetection: { telephone: false },
