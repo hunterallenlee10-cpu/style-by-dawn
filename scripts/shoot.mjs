@@ -21,7 +21,7 @@ for (let i = 0; i < args.length; i++) {
 fs.mkdirSync(out, { recursive: true });
 const browser = await chromium.launch();
 for (const w of widths) {
-  const ctx = await browser.newContext({ viewport: { width: w, height: height ?? (w < 500 ? 812 : 900) }, deviceScaleFactor: scale, isMobile: w < 500, hasTouch: w < 500 });
+  const ctx = await browser.newContext({ viewport: { width: w, height: height ?? (w < 500 ? 812 : 900) }, deviceScaleFactor: scale, isMobile: w < 500, hasTouch: w < 500, reducedMotion: full ? 'reduce' : 'no-preference' });
   const page = await ctx.newPage();
   const errors = [];
   page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
@@ -39,7 +39,7 @@ for (const w of widths) {
     }
     const file = `${out}/${name}-${w}.png`;
     await page.screenshot({ path: file, fullPage: full });
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    const overflow = await page.evaluate((vw) => Math.max(document.documentElement.scrollWidth, window.innerWidth) - vw, w);
     console.log(file, overflow > 0 ? `HORIZONTAL OVERFLOW ${overflow}px` : 'no overflow');
   }
   if (errors.length) console.log(`console errors at ${w}:`, [...new Set(errors)].slice(0, 8));

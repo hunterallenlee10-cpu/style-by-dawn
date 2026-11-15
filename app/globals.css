@@ -332,3 +332,123 @@
     animation: none !important;
   }
 }
+
+/* ---------- The Rail ---------- */
+.rail {
+  --pt: 1.25rem; /* space above the hook crowns */
+  --hw: 9.5rem; /* hanger width */
+  --hook: calc(var(--hw) * 0.043); /* hook curl centre, about 5.2 of the hanger 120 unit width */
+}
+@media (min-width: 1024px) {
+  .rail {
+    --pt: 3rem;
+    --hw: 12rem;
+    /* bleed off the right edge of the viewport */
+    margin-right: calc(-1 * (max(0px, (100vw - 84rem) / 2) + 2.5rem));
+  }
+}
+.rail-rod {
+  top: calc(var(--pt) + var(--hook) - 36px);
+}
+.rail-scroller {
+  padding: var(--pt) 1.25rem 1.25rem;
+  scroll-padding-inline: 1.25rem;
+  cursor: grab;
+}
+@media (min-width: 768px) {
+  .rail-scroller {
+    padding-inline: 2.5rem;
+    scroll-padding-inline: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .rail-scroller {
+    padding-inline: 2rem;
+    scroll-padding-inline: 2rem;
+  }
+}
+.rail-item {
+  width: 78%;
+}
+@media (min-width: 640px) {
+  .rail-item {
+    width: 44%;
+  }
+}
+@media (min-width: 1024px) {
+  .rail-item {
+    width: 16.5rem;
+  }
+}
+.rail-hanger {
+  width: var(--hw);
+}
+.rail-slide {
+  animation: rail-in 760ms cubic-bezier(0.16, 0.84, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 80ms);
+}
+.rail-swing {
+  transform-origin: 50% var(--hook);
+  animation: sway 900ms cubic-bezier(0.36, 0, 0.3, 1) both;
+  animation-delay: calc(var(--i) * 80ms + 560ms);
+}
+.rail-card {
+  transform-origin: 50% var(--hook);
+  transition: transform 280ms cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+@media (hover: hover) {
+  .rail-card:hover {
+    transform: translateY(-4px) rotate(1deg);
+  }
+}
+.rail-card:focus-visible {
+  box-shadow: none;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail-slide,
+  .rail-swing {
+    animation: none;
+  }
+}
+
+.hangtag--linen {
+  background: var(--color-linen);
+}
+.hangtag--linen::before {
+  background: var(--color-petal);
+}
+
+/* ---------- Where are you headed? ---------- */
+.styler {
+  grid-template-areas: 'head' 'chips' 'deck' 'details';
+}
+@media (min-width: 1024px) {
+  .styler {
+    grid-template-areas: 'head deck' 'chips deck' 'details deck';
+    grid-template-rows: auto auto 1fr;
+  }
+}
+.deck-card {
+  transition: transform 300ms cubic-bezier(0.3, 0.7, 0.2, 1);
+  will-change: transform;
+}
+.deck-card[data-state='stacked'] {
+  transform: translate(-50%, -46%) rotate(-5deg) scale(0.94);
+}
+.deck-card[data-state='p0'] {
+  transform: translate(-50%, -50%);
+}
+.deck-card[data-state='p1'] {
+  transform: translate(-38%, -49%) rotate(4deg);
+}
+.deck-card[data-state='p2'] {
+  transform: translate(-62%, -48%) rotate(-3.5deg);
+}
+.deck-card[data-state='p3'] {
+  transform: translate(-50%, -46%) rotate(2deg);
+}
+.deck-card[data-state='leaving'] {
+  transition-duration: 150ms;
+  transform: translate(-150%, -52%) rotate(-9deg);
+}

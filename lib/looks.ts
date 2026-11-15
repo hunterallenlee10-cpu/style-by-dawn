@@ -168,12 +168,15 @@ export const occasions: Occasion[] = [
 ];
 
 // The hero rail: five hanger cards. Each one opens the styler on its occasion.
-export const railLooks: { photo: PhotoId; name: string; occasion: OccasionId }[] = [
-  { photo: '04', name: 'A day in town', occasion: 'town' },
-  { photo: '06', name: 'Pink plaid weather', occasion: 'weekend' },
-  { photo: '05', name: 'Fall at the door', occasion: 'weekend' },
-  { photo: '08', name: 'Easy taupe', occasion: 'town' },
-  { photo: '07', name: 'Crisp white jacket', occasion: 'town' },
+// Cards share a 9:10 frame. `focus` is the object-position that keeps each watermark whole:
+// 04 mark is mid-left (crop the floor), 06 mark is bottom-left (crop the right edge),
+// 08 mark is bottom-left (crop the top), 05 and 07 have none.
+export const railLooks: { photo: PhotoId; name: string; occasion: OccasionId; focus: string }[] = [
+  { photo: '04', name: 'A day in town', occasion: 'town', focus: '50% 0%' },
+  { photo: '06', name: 'Pink plaid weather', occasion: 'weekend', focus: '0% 50%' },
+  { photo: '05', name: 'Fall at the door', occasion: 'weekend', focus: '50% 0%' },
+  { photo: '08', name: 'Easy taupe', occasion: 'town', focus: '50% 100%' },
+  { photo: '07', name: 'Crisp white jacket', occasion: 'town', focus: '50% 0%' },
 ];
 
 // Home bento: "New on the racks"

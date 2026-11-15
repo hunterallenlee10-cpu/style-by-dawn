@@ -11,7 +11,7 @@ export function Nav() {
     <header className="sticky top-0 z-40 border-b border-seam bg-linen/92 backdrop-blur-md">
       <div className="wrap flex h-[4.25rem] items-center justify-between gap-4 lg:h-20">
         <Link href="/" className="shrink-0 rounded-[3px]" aria-label="Style by Dawn, home">
-          <Plate className="h-12 lg:h-14" />
+          <Plate className="h-12 lg:h-[3.75rem]" />
         </Link>
         <nav aria-label="Main" className="hidden lg:block">
           <NavLinks />

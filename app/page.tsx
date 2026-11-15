@@ -1,9 +1,15 @@
+import { Hero } from '@/components/sections/Hero';
+import { ProofStrip } from '@/components/sections/ProofStrip';
+import { StiffanyBand } from '@/components/sections/StiffanyBand';
+import { StylerSection } from '@/components/sections/StylerSection';
+
 export default function Home() {
   return (
-    <div className="wrap section">
-      <h1 className="text-h1">
-        <span className="eyebrow block font-sans">Women&apos;s boutique in Leonardtown, MD</span> Be your best you.
-      </h1>
-    </div>
+    <>
+      <Hero />
+      <ProofStrip />
+      <StylerSection />
+      <StiffanyBand />
+    </>
   );
 }
