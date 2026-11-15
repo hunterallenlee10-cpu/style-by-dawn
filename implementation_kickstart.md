@@ -50,7 +50,7 @@ Type: Libre Caslon Display 400 (display), Instrument Sans 400 to 600 (body). Sca
 - [x] Phase 3: Where are you headed? styler, Stiffany band.
 - [x] Phase 4: New this week bento, holiday band, reviews, FAQ, final band. Home page finished.
 - [x] Phase 5: the Hold Request with every pre-fill wired, the honest last step, the mobile sticky bar.
-- [ ] Phase 6: `/new` with filters and lightbox, `/meet-dawn`, `/visit` with the tap-to-load map, the `/contact` redirect, the 404 page.
+- [x] Phase 6: `/new` with filters and lightbox, `/meet-dawn`, `/visit` with the tap-to-load map, the `/contact` redirect, the 404 page.
 - [ ] Phase 7: launch switch and header, titles, descriptions, h1s, canonicals, JSON-LD (validated), robots, sitemap, `llms.txt`, OG image, favicon, live-mode build guard, `SEO-LAUNCH.md`. Delete `/palette-board`.
 - [ ] Phase 8: Lighthouse 13 on a production build, live mode then demo mode, mobile and desktop. Header proof.
 - [ ] Phase 9: independent review 2 with fact audit, one round of fixes, keyboard-only and 200% zoom passes, final commit.

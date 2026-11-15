@@ -38,7 +38,8 @@ export function HoldFlow({ initialItem, headingLevel = 2 }: { initialItem: HoldI
   const [desktop] = useState(() => typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches);
   const [days] = useState(() => nextSevenDays());
   const heading = useRef<HTMLHeadingElement>(null);
-  const first = useRef(true);
+  const startStep = useRef(step);
+  const moved = useRef(false);
 
   // Steps that apply to this request. The item step only exists when nothing was pre-filled.
   const steps = useMemo<Step[]>(() => {
@@ -50,11 +51,10 @@ export function HoldFlow({ initialItem, headingLevel = 2 }: { initialItem: HoldI
   }, [initialItem, item]);
   const index = step === 'review' ? steps.length : steps.indexOf(step);
 
+  // Move focus to the new step's heading only after the visitor has actually changed step
   useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      return;
-    }
+    if (!moved.current && step === startStep.current) return;
+    moved.current = true;
     heading.current?.focus({ preventScroll: true });
   }, [step]);
 
