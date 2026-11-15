@@ -21,6 +21,14 @@ export function MobileMenu() {
     document.documentElement.style.overflow = open ? 'hidden' : '';
   }, [open]);
 
+  // Close and release the scroll lock synchronously before a link navigates, so the page
+  // transition never sees the viewport change mid-flight.
+  const closeNow = () => {
+    ref.current?.close();
+    document.documentElement.style.overflow = '';
+    setOpen(false);
+  };
+
   // close on route change (compare during render, no effect)
   const [prevPath, setPrevPath] = useState(pathname);
   if (prevPath !== pathname) {
@@ -60,7 +68,7 @@ export function MobileMenu() {
           <nav aria-label="Mobile" className="mt-6">
             <ul className="flex flex-col">
               <li className="border-b border-seam">
-                <Link href="/" className="block py-4 font-display text-h3" onClick={() => setOpen(false)}>
+                <Link href="/" className="block py-4 font-display text-h3" onClick={closeNow}>
                   Home
                 </Link>
               </li>
@@ -70,7 +78,7 @@ export function MobileMenu() {
                     href={l.href}
                     aria-current={pathname === l.href ? 'page' : undefined}
                     className="block py-4 font-display text-h3 aria-[current=page]:text-rose"
-                    onClick={() => setOpen(false)}
+                    onClick={closeNow}
                   >
                     {l.label}
                   </Link>

@@ -13,9 +13,9 @@ type Props = {
 // Anything that opens the Hold Request is a <button>, never a link.
 // DRAFT: confirm Dawn is happy to hold pieces for a day or two. If not, the same flow becomes "Ask Dawn about this" with no other change.
 export function HoldButton({ item = null, className = 'btn btn-primary', label, children }: Props) {
-  const { open } = useHold();
+  const { open, preload } = useHold();
   return (
-    <button type="button" className={className} onClick={() => open(item)} aria-haspopup="dialog" aria-label={label}>
+    <button type="button" className={className} onPointerDown={preload} onClick={() => open(item)} aria-haspopup="dialog" aria-label={label}>
       {children}
     </button>
   );

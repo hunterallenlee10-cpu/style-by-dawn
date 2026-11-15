@@ -255,7 +255,7 @@ export function HoldFlow({ initialItem, headingLevel = 2 }: { initialItem: HoldI
 
       <p className="mt-6 border-t border-seam pt-4 text-small text-barnwood">
         Rather talk? Call or text{' '}
-        <a href={business.phoneHref} className="link inline-flex items-center gap-1">
+        <a href={business.phoneHref} className="link inline-flex min-h-6 items-center gap-1 py-0.5">
           <Phone aria-hidden="true" className="size-3.5" strokeWidth={1.5} />
           {business.phoneDisplay}
         </a>

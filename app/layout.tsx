@@ -3,6 +3,7 @@ import { Instrument_Sans, Libre_Caslon_Display } from 'next/font/google';
 import { ViewTransition } from 'react';
 import { Analytics } from '@vercel/analytics/next';
 import { BackToTop } from '@/components/BackToTop';
+import { ClientGuards } from '@/components/ClientGuards';
 import { Footer } from '@/components/Footer';
 import { HoldProvider } from '@/components/HoldRequest/HoldProvider';
 import { MobileBar } from '@/components/MobileBar';
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <MobileBar />
           <BackToTop />
+          <ClientGuards />
         </HoldProvider>
         {process.env.VERCEL === '1' && <Analytics />}
       </body>

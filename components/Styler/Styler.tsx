@@ -108,7 +108,7 @@ export function Styler({ header }: { header: React.ReactNode }) {
   return (
     <div ref={root} className="styler grid gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
       <div className="[grid-area:head] min-w-0">{header}</div>
-      <div className="[grid-area:chips] min-w-0">
+      <div id="styler-chips" className="[grid-area:chips] min-w-0">
         <p id="styler-chips-label" className="eyebrow text-barnwood">Pick the plan</p>
         <div
           role="radiogroup"

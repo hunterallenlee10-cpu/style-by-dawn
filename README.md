@@ -19,6 +19,8 @@ node scripts/test-keyboard.mjs      # keyboard-only pass
 node scripts/test-zoom.mjs          # 200% zoom and 320px reflow
 node scripts/validate-jsonld.mjs    # structured data
 node scripts/lighthouse.mjs demo    # Lighthouse 13, production build only
+node scripts/mobile-sweep.mjs [base] # every page on six phone profiles
+node scripts/mobile-interactions.mjs [base] "iPhone 13"  # touch interactions
 ```
 
 ## Launch switch
