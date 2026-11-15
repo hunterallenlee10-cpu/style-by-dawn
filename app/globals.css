@@ -54,6 +54,8 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    /* no sideways jump when a modal locks page scroll on desktop */
+    scrollbar-gutter: stable;
     scroll-padding-top: 5rem;
     /* the mobile sticky bar never covers focus */
     scroll-padding-bottom: var(--bar-h, 0px);

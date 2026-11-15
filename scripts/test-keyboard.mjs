@@ -16,7 +16,7 @@ for (const [w, h] of [[1440, 900], [390, 844]]) {
     const seen = new Set();
     for (let i = 0; i < 160; i++) {
       await p.keyboard.press('Tab');
-      await p.waitForTimeout(30);
+      await p.waitForTimeout(60);
       const info = await p.evaluate(() => {
         const el = document.activeElement;
         if (!el || el === document.body) return null;

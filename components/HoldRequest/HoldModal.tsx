@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import type { HoldItem } from '@/lib/looks';
 import { HoldFlow } from './HoldFlow';
@@ -10,7 +10,8 @@ import { HoldFlow } from './HoldFlow';
 export default function HoldModal({ open, item, onClose }: { open: boolean; item: HoldItem | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
+  // Layout effect: the dialog opens in the same frame it mounts, not a paint later
+  useLayoutEffect(() => {
     const d = ref.current;
     if (!d) return;
     if (open && !d.open) d.showModal();

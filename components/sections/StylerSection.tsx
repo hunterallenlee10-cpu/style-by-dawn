@@ -2,7 +2,7 @@ import { Styler } from '../Styler/Styler';
 
 export function StylerSection() {
   return (
-    <section id="styler" aria-labelledby="styler-title" className="section scroll-mt-20">
+    <section id="styler" aria-labelledby="styler-title" className="section">
       <div className="wrap">
         <Styler
           header={

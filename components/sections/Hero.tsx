@@ -41,8 +41,8 @@ export function Hero() {
             Women&apos;s fashion at affordable prices, styled by Dawn herself, inside {business.market} on Duke Street.
           </p>
           <div className="mt-5 flex flex-wrap gap-3 lg:mt-8">
-            <HoldButton>Hold it for me</HoldButton>
-            <a href={mapsDirectionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+            <HoldButton className="btn btn-primary max-[359px]:px-4">Hold it for me</HoldButton>
+            <a href={mapsDirectionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost max-[359px]:px-4">
               Get directions
             </a>
           </div>

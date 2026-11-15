@@ -2,14 +2,17 @@
 
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
-import { createContext, useCallback, useContext, useRef, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import type { HoldItem } from '@/lib/looks';
 
-type HoldCtx = { open: (item?: HoldItem | null) => void; close: () => void };
+type HoldCtx = { open: (item?: HoldItem | null) => void; close: () => void; preload: () => void };
 const Ctx = createContext<HoldCtx | null>(null);
 
-// The modal (and the whole flow) only loads the first time someone opens it.
-const HoldModal = dynamic(() => import('./HoldModal'), { ssr: false });
+// The modal (and the whole flow) stays out of the initial page load. It downloads in the background
+// once the page is idle (or the moment a Hold button is pressed, whichever comes first), so the
+// first tap opens instantly even on a phone connection.
+const loadModal = () => import('./HoldModal');
+const HoldModal = dynamic(loadModal, { ssr: false });
 
 export function HoldProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<{ open: boolean; item: HoldItem | null; key: number }>({
@@ -19,6 +22,16 @@ export function HoldProvider({ children }: { children: React.ReactNode }) {
   });
   const openerRef = useRef<HTMLElement | null>(null);
   const pathname = usePathname();
+
+  // Once the code is in, mount the modal closed. Opening is then a plain state change, so React
+  // never shows it through a freshly resolved Suspense boundary (which it holds back ~300ms).
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 2500));
+    const cancel = window.cancelIdleCallback ?? window.clearTimeout;
+    const id = idle(() => void loadModal().then(() => setReady(true)), { timeout: 4000 });
+    return () => cancel(id);
+  }, []);
 
   const open = useCallback((item?: HoldItem | null) => {
     openerRef.current = (document.activeElement as HTMLElement) ?? null;
@@ -39,9 +52,9 @@ export function HoldProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <Ctx.Provider value={{ open, close }}>
+    <Ctx.Provider value={{ open, close, preload: loadModal }}>
       {children}
-      {state.key > 0 && <HoldModal key={state.key} open={state.open} item={state.item} onClose={close} />}
+      {(ready || state.key > 0) && <HoldModal key={state.key} open={state.open} item={state.item} onClose={close} />}
     </Ctx.Provider>
   );
 }

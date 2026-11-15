@@ -119,3 +119,15 @@ Final demo mode:
 | /new | desktop | 100 | 100 | 100 | 69 | 0.2 s | 0 | 0 ms | is-crawlable |
 | /meet-dawn | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 10 ms | is-crawlable |
 | /visit | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |
+
+## Mobile QA pass (after launch on Vercel)
+Scripts: `scripts/mobile-sweep.mjs` (every page on iPhone SE 320, Galaxy S8 360, iPhone 13 390, Pixel 7 412, iPhone 14 Pro Max 430 and Pixel 7 landscape: overflow, console errors, failed requests, broken images, layout shift while scrolling, tap targets, footer vs sticky bar) and `scripts/mobile-interactions.mjs` (real touch input: rail swipe, snap, arrows, rail tap to styler, chip scrolling, deck swipe vs vertical page scroll, Hold Request bottom sheet with scroll lock, inner scroll and backdrop close, FAQ, back to top, menu, #contact jump, inline Hold, map, /new filters and lightbox swipe, pinch zoom allowed). Chromium only; Safari not available in this environment.
+
+Found and fixed:
+- Tapping a rail card landed the styler 160px down (page scroll-padding plus a section scroll-margin), leaving the deck mostly off screen on phones. Phones now land on the occasion chips with the deck in view.
+- First tap on "Hold it for me" took about 0.9 s to a settled sheet: code download, then a ~300 ms Suspense reveal hold, then an effect a paint later. The modal code now downloads in the background once the page is idle (or on press), mounts closed, and opens with a layout effect: 18 ms from tap to open.
+- Keyboard focus could sit under the sticky bar or the back-to-top button (browsers skip scrolling an element that is already on screen). ClientGuards lifts it clear; it ignores controls that are not displayed.
+- Navigating from the mobile menu aborted the page crossfade with an uncaught "Viewport size changed" error (the menu released its scroll lock mid-transition). The menu now closes before navigating, and the one benign browser rejection is kept out of the console.
+- iPhone SE (320): hero buttons now sit side by side so the rail peeks above the fold; the 23px phone link in the Hold Request is now 24px+.
+- `scrollbar-gutter: stable` so desktop pages do not shift sideways when a modal locks scroll.
+After the fixes: all interaction checks pass on all five phones, the sweep finds nothing but the intended 404 status, keyboard and zoom passes are clean, mobile Lighthouse 99 to 100.

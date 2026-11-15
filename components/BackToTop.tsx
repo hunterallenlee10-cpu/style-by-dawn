@@ -15,6 +15,7 @@ export function BackToTop() {
     <button
       type="button"
       aria-label="Back to top"
+      data-float
       onClick={() => {
         window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
         document.getElementById('top')?.focus({ preventScroll: true });
