@@ -130,4 +130,5 @@ Found and fixed:
 - Navigating from the mobile menu aborted the page crossfade with an uncaught "Viewport size changed" error (the menu released its scroll lock mid-transition). The menu now closes before navigating, and the one benign browser rejection is kept out of the console.
 - iPhone SE (320): hero buttons now sit side by side so the rail peeks above the fold; the 23px phone link in the Hold Request is now 24px+.
 - `scrollbar-gutter: stable` so desktop pages do not shift sideways when a modal locks scroll.
+- A rail tap during a slow first visit could stop short when a late font swap reflowed the page mid-scroll; the scroll now re-aims once when it ends (scripts/test-slow-font-rail.mjs holds fonts back 2.5 s to prove it).
 After the fixes: all interaction checks pass on all five phones, the sweep finds nothing but the intended 404 status, keyboard and zoom passes are clean, mobile Lighthouse 99 to 100.
