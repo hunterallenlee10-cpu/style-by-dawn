@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/guard-live.mjs && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check": "node scripts/check.mjs",
+    "shots": "node scripts/shoot.mjs",
+    "images": "node scripts/prepare-images.mjs",
+    "wordmark": "node scripts/make-wordmark.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

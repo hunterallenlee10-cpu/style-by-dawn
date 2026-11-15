@@ -45,7 +45,7 @@ Contrast (computed by `scripts/oklch.mjs`): espresso on linen 14.61, on petal 13
 Type: Libre Caslon Display 400 (display), Instrument Sans 400 to 600 (body). Scale: label, body, lead, h3, h2, h1, display as `clamp()` steps from the spec. Radius 6px. 8px spacing grid. Section padding 72px mobile, 112 to 128px desktop.
 
 ## Checklist (section 9)
-- [ ] Phase 1: scaffold, print installed versions, tokens in `@theme`, fonts, wordmark SVG script, the `/palette-board` board (screenshot and fix), nav, footer, `npm run check`.
+- [x] Phase 1: scaffold, print installed versions, tokens in `@theme`, fonts, wordmark SVG script, the `/palette-board` board (screenshot and fix), nav, footer, `npm run check`.
 - [ ] Phase 2: the hero with The Rail (375 first, then desktop), the proof strip, independent review 1 and one round of fixes.
 - [ ] Phase 3: Where are you headed? styler, Stiffany band.
 - [ ] Phase 4: New this week bento, holiday band, reviews, FAQ, final band. Home page finished.
