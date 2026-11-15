@@ -19,16 +19,16 @@ export default function NewPage() {
           {thisWeek}
         </p>
         <p className="mt-4 measure text-lead">
-          Every piece here is on the racks at {business.name}, a women&apos;s boutique inside {business.market} on Duke
-          Street in Leonardtown, MD. Dawn styles each one into a look. See something you like? Hold it in your size, or
-          text Dawn to ask about it.
+          These are the latest pieces Dawn has posted from {business.name}, a women&apos;s boutique inside{' '}
+          {business.market} on Duke Street in Leonardtown, MD. See something you like? Ask Dawn to hold it in your size,
+          or text her about it.
         </p>
         <div className="mt-10">
           <NewGrid />
         </div>
         <div className="mt-14 flex flex-col items-start gap-4 rounded-tag bg-sage p-6 md:flex-row md:items-center md:justify-between md:p-8">
           <p className="font-display text-h3">New pieces arrive every week. Follow along on Facebook and Instagram.</p>
-          <div className="flex shrink-0 gap-3">
+          <div className="flex flex-wrap gap-3 md:shrink-0">
             <a href={business.facebook} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
               <FacebookIcon className="size-4" /> Facebook
             </a>

@@ -48,9 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${caslon.variable} ${instrument.variable}`}>
       <body className="pb-[var(--bar-h)] md:pb-0">
+        <span id="top" tabIndex={-1} className="sr-only">
+          Top of page
+        </span>
         <a
-          id="top"
-          tabIndex={-1}
           href="#main"
           className="sr-only fixed top-2 left-2 z-50 rounded-full bg-espresso px-4 py-3 text-linen focus:not-sr-only"
         >

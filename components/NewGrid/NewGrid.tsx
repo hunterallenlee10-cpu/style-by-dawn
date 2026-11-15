@@ -7,8 +7,10 @@ import { business } from '@/lib/business';
 import { categories, newArrivals, photoItem, photos, type Category, type PhotoId } from '@/lib/looks';
 import { HoldButton } from '../HoldRequest/HoldButton';
 
-const textHref = (caption: string) =>
-  `${business.smsHref}?&body=${encodeURIComponent(`Hi Dawn! I saw the ${caption} on your website. Do you have it in my size?`)}`;
+const textHref = (caption: string, sized: boolean) =>
+  `${business.smsHref}?&body=${encodeURIComponent(
+    `Hi Dawn! I saw this on your website: ${caption}. ${sized ? 'Do you have it in my size?' : 'Do you still have it?'}`,
+  )}`;
 
 // Filters run client-side with no reloads. Tapping a photo opens a lightbox (arrow keys, swipe, Esc).
 export function NewGrid() {
@@ -21,7 +23,7 @@ export function NewGrid() {
 
   return (
     <div>
-      <div role="group" aria-label="Filter new arrivals" className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-1 md:-mx-10 md:px-10 lg:mx-0 lg:flex-wrap lg:px-0">
+      <div role="group" aria-label="Filter new arrivals" className="chip-row no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-1 md:-mx-10 md:px-10 lg:mx-0 lg:flex-wrap lg:px-0">
         {categories.map((c) => (
           <button key={c.id} type="button" aria-pressed={filter === c.id} onClick={() => setFilter(c.id)} className="chip shrink-0">
             {c.label}
@@ -32,11 +34,11 @@ export function NewGrid() {
         Showing {list.length} {list.length === 1 ? 'piece' : 'pieces'}
         {filter === 'all' ? '' : ` in ${categories.find((c) => c.id === filter)?.label}`}.
       </p>
-      <ul className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3 xl:columns-4">
+      <ul className="mt-8 columns-2 gap-3 sm:gap-5 lg:columns-3 xl:columns-4">
         {list.map((id, i) => {
           const ph = photos[id];
           return (
-            <li key={id} className="hangtag mb-5 break-inside-avoid p-2 pt-7">
+            <li key={id} className="hangtag mb-3 break-inside-avoid p-1.5 pt-6 sm:mb-5 sm:p-2 sm:pt-7">
               <button
                 type="button"
                 onClick={() => setOpen(i)}
@@ -48,22 +50,28 @@ export function NewGrid() {
                   width={ph.width}
                   height={ph.height}
                   alt={ph.alt}
-                  sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 30vw, (min-width: 640px) 46vw, 92vw"
+                  sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 30vw, 46vw"
                   className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.02]"
                 />
                 <span className="absolute top-2 right-2 inline-flex size-9 items-center justify-center rounded-full bg-linen/90 text-espresso opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
                   <Expand aria-hidden="true" className="size-4" strokeWidth={1.5} />
                 </span>
               </button>
-              <p className="mt-3 px-1">
+              <p className="mt-2.5 px-0.5 sm:px-1">
                 <span className="tag-label">{ph.caption}</span>
               </p>
-              <div className="mt-3 flex flex-wrap gap-2 px-1 pb-1">
-                <HoldButton item={photoItem(id)} label={`Hold it for me: ${ph.caption}`} className="btn btn-primary btn-sm">
-                  Hold it for me
+              <div className="mt-3 flex gap-2 px-0.5 pb-0.5 sm:flex-wrap sm:px-1 sm:pb-1">
+                <HoldButton item={photoItem(id)} label={`Hold it for me: ${ph.caption}`} className="btn btn-primary btn-sm min-w-0 flex-1 px-2 sm:flex-none sm:px-[1.125rem]">
+                  <span className="sm:hidden">Hold it</span>
+                  <span className="hidden sm:inline">Hold it for me</span>
                 </HoldButton>
-                <a href={textHref(ph.caption)} className="btn btn-ghost btn-sm" aria-label={`Text Dawn about this: ${ph.caption}`}>
-                  <MessageCircle aria-hidden="true" className="size-4" strokeWidth={1.5} /> Text Dawn about this
+                <a
+                  href={textHref(ph.caption, ph.sized)}
+                  className="btn btn-ghost btn-sm size-11 shrink-0 p-0 sm:size-auto sm:px-[1.125rem] sm:py-2"
+                  aria-label={`Text Dawn about this: ${ph.caption}`}
+                >
+                  <MessageCircle aria-hidden="true" className="size-4" strokeWidth={1.5} />
+                  <span className="hidden sm:inline">Text Dawn about this</span>
                 </a>
               </div>
             </li>

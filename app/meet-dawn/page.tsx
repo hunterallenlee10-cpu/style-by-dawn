@@ -52,7 +52,7 @@ export default function MeetDawnPage() {
             <div data-draft="story wording" className="mt-6 space-y-5 measure text-lead">
               <p>
                 Dawn grew up in {business.county}. {business.historyLine} Every week she dresses Stiffany, the shop
-                mannequin, in the newest arrivals, and she will help you put the whole outfit together.
+                mannequin, and she is happy to help you put the whole outfit together.
               </p>
               <p>Her aim fits on one line:</p>
               <p className="border-l-2 border-mint pl-5 font-display text-h3">&ldquo;{business.fbBio}&rdquo;</p>
@@ -114,7 +114,7 @@ export default function MeetDawnPage() {
           <div className="lg:col-span-7">
             <h2 id="next-title" className="text-h2">Come say hello.</h2>
             <p className="mt-5 measure text-lead">
-              Tell Dawn where you are headed and she will pull the pieces. Hold one before you come, or just stop by.
+              Tell Dawn where you are headed. Ask her to hold a piece before you come, or just stop by.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <HoldButton>Hold it for me</HoldButton>

@@ -113,7 +113,7 @@ export function Styler({ header }: { header: React.ReactNode }) {
         <div
           role="radiogroup"
           aria-labelledby="styler-chips-label"
-          className="no-scrollbar -mx-5 mt-4 flex snap-x gap-2 overflow-x-auto px-5 pb-1 md:-mx-10 md:px-10 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0"
+          className="chip-row no-scrollbar -mx-5 mt-4 flex snap-x gap-2 overflow-x-auto px-5 pb-1 md:-mx-10 md:px-10 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0"
         >
           {occasions.map((o, i) => {
             const checked = o.id === occasionId;
@@ -158,7 +158,7 @@ export function Styler({ header }: { header: React.ReactNode }) {
             const dx = e.clientX - s.x;
             if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(e.clientY - s.y)) next(dx < 0 ? 1 : -1);
           }}
-          className="deck relative mx-auto aspect-[1/1.04] w-full max-w-[36rem] touch-pan-y select-none"
+          className="deck relative mx-auto aspect-[1/1.08] w-full max-w-[36rem] touch-pan-y select-none lg:aspect-[1/1.04]"
         >
           {occasion.looks.map((look, i) => {
             const ph = photos[look.photo];
@@ -169,7 +169,7 @@ export function Styler({ header }: { header: React.ReactNode }) {
                 key={`${occasion.id}-${look.photo}`}
                 data-state={state}
                 aria-hidden={pos !== 0}
-                className="deck-card absolute top-1/2 left-1/2 w-[78%] rounded-[5px] border border-seam bg-linen p-2"
+                className="deck-card absolute top-1/2 left-1/2 w-[86%] rounded-[5px] lg:w-[78%] border border-seam bg-linen p-2"
                 style={{ zIndex: 10 - pos }}
               >
                 <Image
@@ -177,7 +177,7 @@ export function Styler({ header }: { header: React.ReactNode }) {
                   width={ph.width}
                   height={ph.height}
                   alt={ph.alt}
-                  sizes="(min-width: 1024px) 28rem, 78vw"
+                  sizes="(min-width: 1024px) 28rem, 86vw"
                   draggable={false}
                   className="block h-auto w-full rounded-[3px]"
                 />

@@ -8,9 +8,9 @@ const p = await (await b.newContext({ viewport: { width: 1280, height: 900 } }))
 let ok = true;
 const assert = (c, m) => { console.log((c ? '  ok  ' : '  FAIL ') + m); if (!c) ok = false; };
 await p.goto(base + '/new', { waitUntil: 'networkidle' });
-assert((await p.locator('ul.columns-1 > li').count()) === 19, 'All shows 19 pieces');
+assert((await p.locator('ul.columns-2 > li').count()) === 19, 'All shows 19 pieces');
 await p.getByRole('button', { name: 'Cozy and gifts' }).click();
-const cozy = await p.locator('ul.columns-1 > li').count();
+const cozy = await p.locator('ul.columns-2 > li').count();
 assert(cozy === 3, `Cozy and gifts filters client-side (${cozy})`);
 assert(p.url().endsWith('/new'), 'no navigation on filter');
 await p.getByRole('button', { name: /Open a larger photo: Merry/ }).click();

@@ -33,6 +33,14 @@ export default function VisitPage() {
           {business.name} is a women&apos;s boutique inside {business.market} at {business.addressLine}, about{' '}
           {business.nearby} in {business.county}. Open Tuesday to Sunday.
         </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <a href={mapsDirectionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <MapPin aria-hidden="true" className="size-4" strokeWidth={1.5} /> Get directions
+          </a>
+          <a href="#contact" className="btn btn-ghost">
+            Ask Dawn to hold something
+          </a>
+        </div>
 
         <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-12 lg:gap-12">
           <figure className="order-2 lg:order-none lg:col-span-7">
@@ -108,11 +116,11 @@ export default function VisitPage() {
       <section aria-labelledby="inside-title" className="section">
         <div className="wrap">
           <h2 id="inside-title" className="text-h2">Inside the shop.</h2>
-          <div className="mt-10 grid grid-cols-2 items-start gap-4 lg:gap-6">
+          <div className="mt-10 grid grid-cols-2 gap-4 lg:gap-6">
             {inside.map((ph) => (
               <figure key={ph.id} className="reveal">
                 <div className="rounded-[5px] border border-seam bg-petal p-2">
-                  <Image src={ph.src} width={ph.width} height={ph.height} alt={ph.alt} sizes="(min-width: 1344px) 640px, 48vw" className="h-auto w-full rounded-[3px]" />
+                  <Image src={ph.src} width={ph.width} height={ph.height} alt={ph.alt} sizes="(min-width: 1344px) 640px, 48vw" className="aspect-[4/5] h-auto w-full rounded-[3px] object-cover" />
                 </div>
                 <figcaption className="mt-3">
                   <span className="tag-label">{ph.caption}</span>

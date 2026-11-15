@@ -37,7 +37,7 @@ export const photos: Record<PhotoId, Photo> = {
     "Find us inside Shepherd's Old Field Market, a block off the square", [], false, 'none'),
   '02': p('02', '02-storefront-sign-alt-angle.jpg', 1078, 952,
     'The Style by Dawn shopfront with its sage sign and the door open to the pink interior',
-    'The door is open on Duke Street', [], false, 'none'),
+    'Come on in, the door is open', [], false, 'none'),
   '03': p('03', '03-stiffany-black-ribbed-dress-then-cream-coat-diptych.jpg', 1092, 1092,
     'Stiffany the shop mannequin in a black ribbed midi dress with a leopard belt, then the same look with a long cream coat',
     'Black ribbed midi, leopard belt, cream coat', ['dresses', 'jackets'], true, 'bc'),
@@ -88,7 +88,7 @@ export const photos: Record<PhotoId, Photo> = {
     'Zebra totes, wide-leg jeans', ['bags', 'denim'], true, 'bl'),
   '19': p('19', '19-denim-table-graphic-tees-wall.jpg', 874, 874,
     'The barnwood and galvanised denim table with graphic tees and caps on the wall behind',
-    'The denim table', ['denim', 'tees'], true, 'none'),
+    'Denim table, graphic tees', ['denim', 'tees'], true, 'none'),
   '20': p('20', '20-denim-stack-closeup.jpg', 874, 874,
     'A close stack of jeans showing back pockets and tags',
     'Jeans, stacked and tagged', ['denim'], true, 'bl'),
@@ -208,6 +208,7 @@ export const occasionItem = (o: Occasion, lookIndex = 0): HoldItem => {
 export const photoItem = (id: PhotoId): HoldItem => ({
   id: `photo-${id}`,
   label: photos[id].caption,
+  phrase: `the piece I saw on your website (${photos[id].caption})`,
   photo: id,
   sized: photos[id].sized,
 });

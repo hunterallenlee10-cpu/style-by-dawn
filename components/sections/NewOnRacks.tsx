@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { thisWeek } from '@/lib/business';
 import { photos, type PhotoId } from '@/lib/looks';
 import { PhotoTile } from '../ui/PhotoTile';
 
@@ -26,9 +25,7 @@ export function NewOnRacks() {
             <p className="eyebrow text-green">New this week</p>
             <h2 id="new-title" className="mt-3 text-h2">New on the racks.</h2>
           </div>
-          <p data-draft="weekly line" className="max-w-sm text-barnwood">
-            {thisWeek} Tap any piece to hold it.
-          </p>
+          <p className="max-w-sm text-barnwood">Tap any piece to ask Dawn to hold it for you.</p>
         </div>
         <div className="mt-10 grid grid-cols-2 items-start gap-3 sm:gap-4 lg:flex lg:flex-wrap lg:gap-5">
           {layout.map((t) => (

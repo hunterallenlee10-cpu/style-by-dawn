@@ -53,7 +53,7 @@ Type: Libre Caslon Display 400 (display), Instrument Sans 400 to 600 (body). Sca
 - [x] Phase 6: `/new` with filters and lightbox, `/meet-dawn`, `/visit` with the tap-to-load map, the `/contact` redirect, the 404 page.
 - [x] Phase 7: launch switch and header, titles, descriptions, h1s, canonicals, JSON-LD (validated), robots, sitemap, `llms.txt`, OG image, favicon, live-mode build guard, `SEO-LAUNCH.md`. Delete `/palette-board`.
 - [x] Phase 8: Lighthouse 13 on a production build, live mode then demo mode, mobile and desktop. Header proof.
-- [ ] Phase 9: independent review 2 with fact audit, one round of fixes, keyboard-only and 200% zoom passes, final commit.
+- [x] Phase 9: independent review 2 with fact audit, one round of fixes, keyboard-only and 200% zoom passes, final commit.
 
 ## Phase log
 - Phase 2, independent review 1 (fresh subagent, hero screenshots only): 68/100 (design 28/40, usability 20/30, creativity 13/20, content 7/10). Fixed: (1) the rail now shows hooks and about half the first card above the mobile bar (tighter hero spacing, smaller mobile hangers); (2) rail reads as a rod, not a slider (stroke-only hangers, no panel border, bleeds off the right edge on desktop, uniform 9:10 frames with per-photo crop focus that keeps every watermark whole, aligned tags, less dead space); (3) the weekly line's dot became a short mint rule, the nav plate is larger with a lighter frame. Not applied, because the spec fixes them: renaming "Hold it for me", rewriting Dawn's sub line, and photo-first proof order on phones (it would push the 2016 line and the review out of the first two screens).
@@ -87,4 +87,35 @@ Demo mode (SEO 69 expected, only is-crawlable fails):
 | / | desktop | 100 | 100 | 100 | 69 | 0.3 s | 0 | 0 ms | is-crawlable |
 | /new | desktop | 100 | 100 | 100 | 69 | 0.3 s | 0 | 0 ms | is-crawlable |
 | /meet-dawn | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |
+| /visit | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |
+
+- Phase 9, independent review 2 (fresh subagent, 1440 and 375 screenshots of all four pages plus rendered text): 76/100 (design 31/40, usability 21/30, creativity 16/20, content 8/10). Fact audit: phone, email, address, hours, links, all three reviews and all five Dawn captions verified word for word; no em dashes, hype words, stars or counts. Fixed in one round: /new is a 2-column grid on phones with compact Hold and text-icon actions and a fade on scrollable chip rows; the weekly line no longer repeats in the rack intro; the styler deck is larger on phones; /visit has Get directions and Ask Dawn to hold something at the top; Inside the shop tiles share a 4:5 frame; hold copy now reads as a request, not a policy; the /new intro no longer claims every piece is on the racks; photo 02 caption corrected (the door opens inside the market, not onto Duke Street); pre-written texts fixed ('the The denim table', and caps or bags ask 'Do you still have it?'). Kept as the spec dictates: meta descriptions, the FAQ answers, S/M/L/XL chips (DRAFT), 'Be your best you.', photo 03 in both the styler and the Stiffany band.
+- Keyboard-only pass (scripts/test-keyboard.mjs): every focus stop on all four pages at 1440 and 390 is visible, styled and never under the sticky header or mobile bar; skip link is the first stop (it was not, fixed). 200% zoom pass (scripts/test-zoom.mjs at 720, 640 and 320 CSS px): no horizontal scroll, no clipped text (a 4px overflow on /new at 320 was fixed).
+
+Final Lighthouse 13.6.0, live mode (ALLOW_DRAFT_IN_LIVE=1, local only):
+
+| Page | Form | Perf | A11y | Best Pr. | SEO | LCP | CLS | TBT | Failing (a11y/BP/SEO) |
+|---|---|---|---|---|---|---|---|---|---|
+| / | mobile | 93 | 100 | 100 | 100 | 3.1 s | 0 | 120 ms | none |
+| /new | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 60 ms | none |
+| /meet-dawn | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 50 ms | none |
+| /visit | mobile | 100 | 100 | 100 | 100 | 0.9 s | 0 | 80 ms | none |
+| / | desktop | 100 | 100 | 100 | 100 | 0.3 s | 0 | 0 ms | none |
+| /new | desktop | 100 | 100 | 100 | 100 | 0.3 s | 0 | 0 ms | none |
+| /meet-dawn | desktop | 100 | 100 | 100 | 100 | 0.6 s | 0 | 0 ms | none |
+| /visit | desktop | 100 | 100 | 100 | 100 | 0.7 s | 0 | 0 ms | none |
+
+Home mobile re-runs after the 93 outlier (rail card picked as LCP mid-slide): 99, 98, 99, LCP 0.9 s, observed LCP 173 to 186 ms.
+
+Final demo mode:
+
+| Page | Form | Perf | A11y | Best Pr. | SEO | LCP | CLS | TBT | Failing (a11y/BP/SEO) |
+|---|---|---|---|---|---|---|---|---|---|
+| / | mobile | 99 | 100 | 100 | 69 | 0.9 s | 0 | 140 ms | is-crawlable |
+| /new | mobile | 99 | 100 | 100 | 69 | 0.9 s | 0 | 100 ms | is-crawlable |
+| /meet-dawn | mobile | 99 | 100 | 100 | 69 | 0.9 s | 0 | 120 ms | is-crawlable |
+| /visit | mobile | 100 | 100 | 100 | 69 | 0.9 s | 0 | 80 ms | is-crawlable |
+| / | desktop | 100 | 100 | 100 | 69 | 0.7 s | 0 | 0 ms | is-crawlable |
+| /new | desktop | 100 | 100 | 100 | 69 | 0.2 s | 0 | 0 ms | is-crawlable |
+| /meet-dawn | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 10 ms | is-crawlable |
 | /visit | desktop | 100 | 100 | 100 | 69 | 0.6 s | 0 | 0 ms | is-crawlable |

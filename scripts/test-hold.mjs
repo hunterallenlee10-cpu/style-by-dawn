@@ -74,7 +74,7 @@ for (const w of [375, 1440]) {
   await dlg.getByRole('button', { name: 'Next' }).click();
   const msg = await dlg.locator('p.rounded-tag').innerText();
   console.log('       caps message:', msg);
-  assert(/Could you hold the Merry & Bright snapback caps\? I'm not sure which day/.test(msg), 'unsized message has no size');
+  assert(/Could you hold the piece I saw on your website \(Merry & Bright snapback caps\)\? I'm not sure which day/.test(msg), 'unsized message has no size');
   // Back from review returns to day
   await dlg.getByRole('button', { name: 'Back' }).click();
   assert(await dlg.getByText('When can you stop in?').isVisible(), 'Back works');
