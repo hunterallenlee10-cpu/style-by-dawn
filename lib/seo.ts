@@ -1,14 +1,23 @@
 import type { Metadata } from 'next';
 import { absUrl } from './site';
 
-// Title, description, self-referencing canonical and Open Graph for one page.
+// Next merges metadata shallowly: a page's openGraph or twitter object replaces the layout's
+// entirely, so every page carries the full set (image, card type, site name).
+export const ogImage = {
+  url: '/og-image.png',
+  width: 1200,
+  height: 630,
+  alt: "Style by Dawn, Be your best you. The shopfront inside Shepherd's Old Field Market",
+};
+
+// Title, description, self-referencing canonical, Open Graph and Twitter card for one page.
 export function pageMeta(path: string, title: string, description: string): Metadata {
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: absUrl(path) },
-    openGraph: { url: absUrl(path), title, description },
-    twitter: { title, description },
+    openGraph: { type: 'website', siteName: 'Style by Dawn', locale: 'en_US', url: absUrl(path), title, description, images: [ogImage] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage.url] },
   };
 }
 
