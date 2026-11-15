@@ -28,7 +28,9 @@ export function Hero() {
       <div className="wrap grid grid-cols-[minmax(0,1fr)] gap-y-5 pt-5 pb-0 sm:pt-10 lg:grid-cols-12 lg:gap-x-12 lg:pt-16 lg:pb-20">
         <div className="flex flex-col justify-center lg:col-span-5">
           <h1 id="hero-title">
-            <span className="eyebrow block font-sans text-barnwood">Women&apos;s boutique in Leonardtown, MD</span>
+            <span className="eyebrow block font-sans text-barnwood">
+              Women&apos;s boutique in Leonardtown, MD<span className="sr-only">.</span>
+            </span>
             <span className="mt-2 block font-display text-h1 tracking-[-0.01em] text-espresso lg:mt-5">Be your best you.</span>
           </h1>
           <p data-draft="weekly line" className="mt-3 flex items-start gap-3 text-small font-semibold text-green lg:mt-6">

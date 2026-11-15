@@ -38,3 +38,11 @@ export const pages = {
       "Visit Style by Dawn inside Shepherd's Old Field Market, 22725 Duke Street, Leonardtown, MD. Open Tuesday to Sunday. Get directions, call or text Dawn.",
   },
 } as const;
+
+// Real last-modified dates for the sitemap. Update when a page's content changes.
+export const lastModified = {
+  '/': '2026-11-15',
+  '/new': '2026-11-15',
+  '/meet-dawn': '2026-11-15',
+  '/visit': '2026-11-15',
+} as const;

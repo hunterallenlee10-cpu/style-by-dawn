@@ -11,6 +11,7 @@ type Props = {
 };
 
 // Anything that opens the Hold Request is a <button>, never a link.
+// DRAFT: confirm Dawn is happy to hold pieces for a day or two. If not, the same flow becomes "Ask Dawn about this" with no other change.
 export function HoldButton({ item = null, className = 'btn btn-primary', label, children }: Props) {
   const { open } = useHold();
   return (
