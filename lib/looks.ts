@@ -196,6 +196,8 @@ export type HoldItem = {
   photo?: PhotoId;
   sized: boolean;
   kind?: 'piece' | 'facebook' | 'help';
+  phrase?: string; // how the text message names it, default "the {label}"
+  ask?: string; // a whole custom ask sentence
 };
 
 export const occasionItem = (o: Occasion, lookIndex = 0): HoldItem => {
@@ -213,6 +215,7 @@ export const photoItem = (id: PhotoId): HoldItem => ({
 export const stiffanyItem: HoldItem = {
   id: 'stiffany-03',
   label: "Stiffany's look",
+  phrase: "Stiffany's look",
   detail: 'black ribbed dress, leopard belt and cream coat',
   photo: '03',
   sized: true,
@@ -220,10 +223,11 @@ export const stiffanyItem: HoldItem = {
 
 export const giftItem: HoldItem = {
   id: 'gift',
-  label: 'holiday gift',
-  detail: 'sherpa, slipper boots or a Merry & Bright cap',
+  label: 'A holiday gift',
+  detail: 'Sherpa, slipper boots or a Merry & Bright cap',
   photo: '15',
   sized: false,
+  ask: "Could you hold a holiday gift for me? I'm thinking sherpa, slipper boots or a Merry & Bright cap.",
 };
 
 export const pickerItems: HoldItem[] = [

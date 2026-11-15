@@ -8,7 +8,7 @@ export function PhotoTile({ id, sizes, className = '' }: { id: PhotoId; sizes: s
   const ph = photos[id];
   const price = showPricing && prices[id] ? `, from $${prices[id]}` : '';
   return (
-    <HoldButton item={photoItem(id)} className={`group hangtag block w-full p-1.5 pt-6 text-left sm:p-2 sm:pt-7 ${className}`}>
+    <HoldButton item={photoItem(id)} label={`${ph.caption}. Hold it for me`} className={`group hangtag block w-full p-1.5 pt-6 text-left sm:p-2 sm:pt-7 ${className}`}>
       <span className="block overflow-hidden rounded-[3px]">
         <Image
           src={ph.src}
@@ -28,7 +28,6 @@ export function PhotoTile({ id, sizes, className = '' }: { id: PhotoId; sizes: s
           Hold it
         </span>
       </span>
-      <span className="sr-only">. Hold it for me</span>
     </HoldButton>
   );
 }
